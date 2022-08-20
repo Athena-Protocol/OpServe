@@ -28,6 +28,8 @@ NOTE:  If you are doing the steps for the first time. Do these additional steps 
    aws eks update-kubeconfig --name athena-compute-cluster --region us-east-1
    
 **Steps to setup Athena Cluster**
+===========================================
+
 
 **Create EKS Cluster**
 ===========================================
