@@ -25,16 +25,20 @@ Use token from step 1.
 
 **Create namespaces**
 ===========================================
-kubectl create namespace ocean-compute
-kubectl create namespace ocean-operator
-kubectl create market
-kubectl create provider
+1. kubectl create namespace ocean-compute
+2. kubectl create namespace ocean-operator
+3. kubectl create market
+4. kubectl create provider
 
 
 
 **Yaml files of each service**
 ===========================================
 Each repo has deployment.yaml file (created newly for market, provider) that will be used for deploying pods for each service
+
+Run Yaml file for each service. Example - 
+kubectl config set-context --current --namespace market
+kubectl apply -f d:\Projects\Ocean\market-deploy.yml
 
 
 
