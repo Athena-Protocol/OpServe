@@ -7,12 +7,12 @@ Ocean Protocol Middelware configured to run on with Athena Protocol integrations
 
 1. eksctl create cluster --name athena-compute-cluster --region us-east-1
 
-To install eksctl - https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
+	To install eksctl - https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
 
-https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
+	https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html	
 
 2. Install kubernetes dashboard
-https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
+	https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
 
 **Run Kubernetes Dashboard**
 ===========================================
@@ -37,26 +37,37 @@ Use token from step 1.
 Each repo has deployment.yaml file (created newly for market, provider) that will be used for deploying pods for each service
 
 Run Yaml file for each service. Example - 
-kubectl config set-context --current --namespace market
-kubectl apply -f d:\Projects\Ocean\market-deploy.yml
+1. kubectl config set-context --current --namespace market
+2. kubectl apply -f d:\Projects\Ocean\market-deploy.yml
+
+**Setup load balancer to expose market**
+===========================================
+Expose market through load balancer
+
+kubectl expose deployment market --type=LoadBalancer --name=market
+
+Copy the endpoint from kubernetes dashboard - which is the URL of market service
 
 
 
-
-Installing Prometheus on AWS EKS using helm:
+**Installing Prometheus on AWS EKS using helm**
 ===========================================
 
-1. kubectl create namespace monitoring
+1. kubectl create namespace prometheus
 
-2. helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 
-3. helm upgrade -i prometheus prometheus-community/prometheus \
-    --namespace monitoring \
+
+2. Install helm - https://helm.sh/docs/intro/install/
+
+3. helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+
+4. helm upgrade -i prometheus prometheus-community/prometheus \
+    --namespace prometheus \
     --set alertmanager.persistentVolume.storageClass="gp2",server.persistentVolume.storageClass="gp2"
 
-4. kubectl -n monitoring patch svc prometheus-service -p '{"spec": {"type": "LoadBalancer"}}'
+5. kubectl -n prometheus patch svc prometheus-server -p {"spec": {"type": "LoadBalancer"}}
 
-5. kubectl apply -f grafana.yml
+6. kubectl apply -f grafana.yml
 
 
 Installing filebeat on AWS EKS using ECK:
@@ -71,3 +82,8 @@ Installing filebeat on AWS EKS using ECK:
 ----    Change the Elasticsearch/Opensearch url and credentials in the filebeat.yml file.  ---
 
 3. kubectl apply -f filebeat.yml
+
+
+long tpken - 
+
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
