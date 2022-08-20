@@ -26,9 +26,11 @@ NOTE: If you are running the already setup kubernetes cluster, you only need to 
 
 1. In a command prompt run - 
 	aws configure
+	
    Provide your keys and region in which k8 is setup ex. us-east-1. You can get the keys from IAM service.
    
 2. Install kubectl (1.24)
+
 3. Run command - 
    aws eks update-kubeconfig --name athena-compute-cluster --region us-east-1
    
