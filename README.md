@@ -1,19 +1,6 @@
 # OpServe
 Ocean Protocol Middelware configured to run on with Athena Protocol integrations. 
 
-
-**Create EKS Cluster**
-===========================================
-
-1. eksctl create cluster --name athena-compute-cluster --region us-east-1
-
-	To install eksctl - https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
-
-	https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html	
-
-2. Install kubernetes dashboard
-	https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
-
 **Run Kubernetes Dashboard**
 ===========================================
 If you are running an already setup athena kubernetes cluster, you need to perform the below steps to see the kubernetes dashboard. Run the following commands in a command line -
@@ -40,6 +27,20 @@ NOTE:  If you are doing the steps for the first time. Do these additional steps 
 3. Run command - 
    aws eks update-kubeconfig --name athena-compute-cluster --region us-east-1
    
+**Steps to setup Athena Cluster**
+**Create EKS Cluster**
+===========================================
+
+1. eksctl create cluster --name athena-compute-cluster --region us-east-1
+
+	To install eksctl - https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
+
+	https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html	
+
+2. Install kubernetes dashboard
+	https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
+
+
  
 **Create namespaces**
 ===========================================
