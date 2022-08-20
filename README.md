@@ -2,6 +2,13 @@
 Ocean Protocol Middelware configured to run on with Athena Protocol integrations. 
 
 
+**Create EKS Cluster**
+===========================================
+
+eksctl create cluster --name athena-compute-cluster --region us-east-1
+
+To install eksctl - https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
+
 
 Installing Prometheus on AWS EKS using helm:
 ===========================================
