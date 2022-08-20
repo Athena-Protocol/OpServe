@@ -16,26 +16,27 @@ Ocean Protocol Middelware configured to run on with Athena Protocol integrations
 
 **Run Kubernetes Dashboard**
 ===========================================
-1. aws eks get-token --cluster-name athena-compute-cluster 
-2. kubectl proxy
-3. http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
+If you are running an already setup athena kubernetes cluster, you need to perform the below steps to see the kubernetes dashboard. Run the following commands in a command line -
+
+1. aws configure
+   Provide your keys and region in which k8 is setup ex. us-east-1. Download the keys for your user from IAM service.
+2. aws eks get-token --cluster-name athena-compute-cluster 
+3. kubectl proxy (leave this running)
+4. In the browser open - http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
 
 Enter token from step 1 to login. If the token expires, regenerate using step 1.
 
-NOTE: If you are running the already setup kubernetes cluster, you only need to perform the above steps to see the kubernetes dashboard. Make sure you have setup aws and kubernetes command line. For that perform the following steps - 
+NOTE:  If you are doing the steps for the first time. Do these additional steps first - 
+  
+1. Install kubectl (1.24)
 
-1. In a command prompt run - 
-	aws configure
-	
-   Provide your keys and region in which k8 is setup ex. us-east-1. You can get the keys from IAM service.
-   
-2. Install kubectl (1.24)
+2. aws configure
+   Provide your keys and region in which k8 is setup ex. us-east-1. Download the keys for your user from IAM service.
 
 3. Run command - 
    aws eks update-kubeconfig --name athena-compute-cluster --region us-east-1
    
- This is a one time setup.  
-
+ 
 **Create namespaces**
 ===========================================
 1. kubectl create namespace ocean-compute
