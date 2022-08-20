@@ -23,9 +23,20 @@ https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
 Use token from step 1.
 
 
+**Create namespaces**
+===========================================
+kubectl create namespace ocean-compute
+kubectl create namespace ocean-operator
+kubectl create market
+kubectl create provider
+
+
+
 **Yaml files of each service**
 ===========================================
 Each repo has deployment.yaml file (created newly for market, provider) that will be used for deploying pods for each service
+
+
 
 
 Installing Prometheus on AWS EKS using helm:
