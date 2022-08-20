@@ -19,9 +19,13 @@ Ocean Protocol Middelware configured to run on with Athena Protocol integrations
 If you are running an already setup athena kubernetes cluster, you need to perform the below steps to see the kubernetes dashboard. Run the following commands in a command line -
 
 1. aws configure
+
    -Provide your keys and region in which k8 is setup example us-east-1. Download the keys for your user from IAM service.
+   
 2. aws eks get-token --cluster-name athena-compute-cluster 
+
 3. kubectl proxy (leave this running)
+
 4. In the browser open - http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
 
 Enter token from step 1 to login. If the token expires, regenerate using step 1.
