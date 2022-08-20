@@ -14,7 +14,13 @@ https://docs.aws.amazon.com/eks/latest/userguide/eksctl.html
 2. Install kubernetes dashboard
 https://docs.aws.amazon.com/eks/latest/userguide/dashboard-tutorial.html
 
+**Run Kubernetes Dashboard**
+===========================================
+1. aws eks get-token --cluster-name athena-compute-cluster 
+2. kubectl proxy
+3. http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/#/login
 
+Use token from step 1.
 
 
 Installing Prometheus on AWS EKS using helm:
